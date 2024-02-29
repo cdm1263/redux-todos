@@ -7,7 +7,7 @@ const useText = () => {
     setTodoText(e.target.value);
   };
 
-  return { todoText, handleChange };
+  return { todoText, setTodoText, handleChange };
 };
 
 export default useText;

@@ -12,7 +12,7 @@ const useHandleTodos = () => {
   const handleAddTodo = (
     e: FormEvent,
     todoText: string,
-    ref: React.MutableRefObject<HTMLInputElement | null>
+    setTodoText: React.Dispatch<React.SetStateAction<string>>
   ) => {
     e.preventDefault();
     if (todoText.trim() !== "") {
@@ -21,9 +21,7 @@ const useHandleTodos = () => {
         text: todoText,
       };
       dispatch(addTodo(newTodo));
-      if (ref.current) {
-        ref.current.value = "";
-      }
+      setTodoText("");
     }
   };
 

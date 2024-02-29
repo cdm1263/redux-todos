@@ -1,20 +1,17 @@
 import styles from "./Form.module.scss";
 import useText from "../../hooks/useText";
 import useHandleTodos from "../../hooks/useHandleTodos";
-import { useRef } from "react";
 
 const Form = () => {
-  const { todoText, handleChange } = useText();
+  const { todoText, setTodoText, handleChange } = useText();
   const { handleAddTodo } = useHandleTodos();
-  const ref = useRef<HTMLInputElement>(null);
 
   return (
     <form
-      onSubmit={(e) => handleAddTodo(e, todoText, ref)}
+      onSubmit={(e) => handleAddTodo(e, todoText, setTodoText)}
       className={styles.form}
     >
       <input
-        ref={ref}
         type="text"
         value={todoText}
         placeholder="할 일을 적어주세요."
