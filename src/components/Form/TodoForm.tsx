@@ -1,30 +1,24 @@
-import { FormEvent, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../../store/todoSlice";
 import styles from "./TodoForm.module.scss";
+import useText from "../../hooks/useText";
+import useHandleTodos from "../../hooks/useHandleTodos";
+import { useRef } from "react";
 
 const TodoForm = () => {
-  const [todoText, setTodoText] = useState<string>("");
-  const dispatch = useDispatch();
+  const { todoText, handleChange } = useText();
+  const { handleAddTodo } = useHandleTodos();
+  const ref = useRef<HTMLInputElement>(null);
 
-  const handleAddTodo = (e: FormEvent) => {
-    e.preventDefault();
-    if (todoText.trim() !== "") {
-      const newTodo = {
-        id: Date.now(),
-        text: todoText,
-      };
-      dispatch(addTodo(newTodo));
-      setTodoText("");
-    }
-  };
   return (
-    <form onSubmit={handleAddTodo} className={styles.form}>
+    <form
+      onSubmit={(e) => handleAddTodo(e, todoText, ref)}
+      className={styles.form}
+    >
       <input
+        ref={ref}
         type="text"
         value={todoText}
         placeholder="할 일을 적어주세요."
-        onChange={(e) => setTodoText(e.target.value)}
+        onChange={(e) => handleChange(e)}
       />
       <button>Add</button>
     </form>
