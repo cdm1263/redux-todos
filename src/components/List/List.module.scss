@@ -1,10 +1,5 @@
-.list {
+.wrapper {
   display: flex;
-  justify-content: space-between;
-  background-color: #f5f5f5;
-  border-radius: 3px;
-  border: 1px solid #c2c2c2;
-  padding: 3px 5px;
-  align-items: center;
-  color: #5c5c5c;
+  flex-direction: column;
+  gap: 5px;
 }

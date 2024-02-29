@@ -1,9 +1,9 @@
-import styles from "./TodoForm.module.scss";
+import styles from "./Form.module.scss";
 import useText from "../../hooks/useText";
 import useHandleTodos from "../../hooks/useHandleTodos";
 import { useRef } from "react";
 
-const TodoForm = () => {
+const Form = () => {
   const { todoText, handleChange } = useText();
   const { handleAddTodo } = useHandleTodos();
   const ref = useRef<HTMLInputElement>(null);
@@ -25,4 +25,4 @@ const TodoForm = () => {
   );
 };
 
-export default TodoForm;
+export default Form;

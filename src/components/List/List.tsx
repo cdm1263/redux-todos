@@ -1,26 +1,18 @@
-import { Todo } from "../../types";
+import { useSelector } from "react-redux";
+import Item from "../Item/Item";
+import store from "../../store/store";
 import styles from "./List.module.scss";
-import useHandleTodos from "../../hooks/useHandleTodos";
 
-interface ListProp {
-  data: Todo;
-}
+type State = ReturnType<typeof store.getState>;
 
-const List = ({ data }: ListProp) => {
-  const { id, text } = data;
-  const { handleDeleteTodo } = useHandleTodos();
-
+const List = () => {
+  const todos = useSelector((state: State) => state.todoList.todos);
   return (
-    <li className={styles.list}>
-      <span>{text}</span>
-      <button
-        onClick={() => {
-          handleDeleteTodo(id);
-        }}
-      >
-        Delete
-      </button>
-    </li>
+    <ul className={styles.wrapper}>
+      {todos.length
+        ? todos.map((todo) => <Item key={todo.id} data={todo} />)
+        : null}
+    </ul>
   );
 };
 
