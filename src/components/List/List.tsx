@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Todo } from "../../types";
 import { deleteTodo } from "../../store/todoSlice";
+import styles from "./List.module.scss";
 
 interface ListProp {
   data: Todo;
@@ -15,16 +16,16 @@ const List = ({ data }: ListProp) => {
   };
 
   return (
-    <div>
+    <li className={styles.list}>
       <span>{text}</span>
       <button
         onClick={() => {
           handleDeleteTodo(id);
         }}
       >
-        delete
+        Delete
       </button>
-    </div>
+    </li>
   );
 };
 

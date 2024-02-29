@@ -1,0 +1,16 @@
+@import "./reset.scss";
+
+button {
+  color: #6b5b95;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px;
+  padding: 5px 10px;
+
+  &:hover {
+    background-color: #c2c2c2;
+  }
+}
